@@ -18,6 +18,11 @@ namespace QuanLySinhVien
             if (emailNhap == emailSinhVien && matKhauNhap == mssv)
             {
                 MessageBox.Show("Đăng nhập thành công");
+
+                quanlisinhvien frm = new quanlisinhvien();
+                frm.Show();
+
+                this.Hide();
             }
             else
             {
