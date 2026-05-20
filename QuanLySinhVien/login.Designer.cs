@@ -1,6 +1,6 @@
 ﻿namespace QuanLySinhVien
 {
-    partial class Form1
+    partial class login
     {
         /// <summary>
         ///  Required designer variable.
@@ -88,7 +88,7 @@
             btnDangNhap.UseVisualStyleBackColor = true;
             btnDangNhap.Click += btnDangNhap_Click;
             // 
-            // Form1
+            // login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -99,8 +99,8 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Name = "Form1";
-            Text = "Form1";
+            Name = "login";
+            Text = "Đăng nhập";
             ResumeLayout(false);
             PerformLayout();
         }

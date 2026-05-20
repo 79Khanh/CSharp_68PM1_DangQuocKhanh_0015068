@@ -1,13 +1,13 @@
 ﻿namespace QuanLySinhVien
 {
-    partial class quanlisinhvien
+    partial class UcQLSV
     {
-        /// <summary>
+        /// <summary> 
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
+        /// <summary> 
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -20,18 +20,18 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Component Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.quảnLíSinhViênToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.quảnLýLớpHọcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -58,64 +58,61 @@
             this.button5 = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // button9
             // 
-            this.menuStrip1.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.quảnLíSinhViênToolStripMenuItem,
-            this.quảnLýLớpHọcToolStripMenuItem,
-            this.đăngXuấtToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1889, 36);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button9.Location = new System.Drawing.Point(1978, 1029);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(135, 97);
+            this.button9.TabIndex = 49;
+            this.button9.Text = ">>";
+            this.button9.UseVisualStyleBackColor = true;
             // 
-            // quảnLíSinhViênToolStripMenuItem
+            // button8
             // 
-            this.quảnLíSinhViênToolStripMenuItem.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
-            this.quảnLíSinhViênToolStripMenuItem.Name = "quảnLíSinhViênToolStripMenuItem";
-            this.quảnLíSinhViênToolStripMenuItem.Size = new System.Drawing.Size(179, 27);
-            this.quảnLíSinhViênToolStripMenuItem.Text = "Quản Lí Sinh Viên";
-            this.quảnLíSinhViênToolStripMenuItem.Click += new System.EventHandler(this.quảnLíSinhViênToolStripMenuItem_Click);
+            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Location = new System.Drawing.Point(1847, 1029);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(135, 97);
+            this.button8.TabIndex = 48;
+            this.button8.Text = ">";
+            this.button8.UseVisualStyleBackColor = true;
             // 
-            // quảnLýLớpHọcToolStripMenuItem
+            // button7
             // 
-            this.quảnLýLớpHọcToolStripMenuItem.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.quảnLýLớpHọcToolStripMenuItem.Name = "quảnLýLớpHọcToolStripMenuItem";
-            this.quảnLýLớpHọcToolStripMenuItem.Size = new System.Drawing.Size(168, 27);
-            this.quảnLýLớpHọcToolStripMenuItem.Text = "Quản Lý Lớp Học";
+            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.Location = new System.Drawing.Point(1157, 1029);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(135, 97);
+            this.button7.TabIndex = 47;
+            this.button7.Text = "<";
+            this.button7.UseVisualStyleBackColor = true;
             // 
-            // đăngXuấtToolStripMenuItem
+            // button6
             // 
-            this.đăngXuấtToolStripMenuItem.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.đăngXuấtToolStripMenuItem.ForeColor = System.Drawing.Color.Red;
-            this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
-            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(104, 27);
-            this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Location = new System.Drawing.Point(1026, 1029);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(135, 97);
+            this.button6.TabIndex = 46;
+            this.button6.Text = "<<";
+            this.button6.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.Gray;
             this.button4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button4.Location = new System.Drawing.Point(376, 899);
+            this.button4.Location = new System.Drawing.Point(471, 917);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(314, 85);
-            this.button4.TabIndex = 35;
+            this.button4.Size = new System.Drawing.Size(410, 85);
+            this.button4.TabIndex = 45;
             this.button4.Text = "Làm mới";
             this.button4.UseVisualStyleBackColor = false;
             // 
@@ -124,10 +121,10 @@
             this.button3.BackColor = System.Drawing.Color.OrangeRed;
             this.button3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.Location = new System.Drawing.Point(37, 899);
+            this.button3.Location = new System.Drawing.Point(51, 917);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(314, 85);
-            this.button3.TabIndex = 34;
+            this.button3.Size = new System.Drawing.Size(387, 85);
+            this.button3.TabIndex = 44;
             this.button3.Text = "Xóa";
             this.button3.UseVisualStyleBackColor = false;
             // 
@@ -136,10 +133,10 @@
             this.button2.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.button2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(375, 781);
+            this.button2.Location = new System.Drawing.Point(475, 799);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(315, 85);
-            this.button2.TabIndex = 33;
+            this.button2.Size = new System.Drawing.Size(406, 85);
+            this.button2.TabIndex = 43;
             this.button2.Text = "Sửa";
             this.button2.UseVisualStyleBackColor = false;
             // 
@@ -148,10 +145,10 @@
             this.button1.BackColor = System.Drawing.SystemColors.Highlight;
             this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(37, 781);
+            this.button1.Location = new System.Drawing.Point(51, 799);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(314, 85);
-            this.button1.TabIndex = 32;
+            this.button1.Size = new System.Drawing.Size(387, 85);
+            this.button1.TabIndex = 42;
             this.button1.Text = "Thêm";
             this.button1.UseVisualStyleBackColor = false;
             // 
@@ -168,10 +165,10 @@
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(37, 79);
+            this.groupBox1.Location = new System.Drawing.Point(51, 97);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(653, 675);
-            this.groupBox1.TabIndex = 31;
+            this.groupBox1.Size = new System.Drawing.Size(830, 675);
+            this.groupBox1.TabIndex = 41;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin sinh viên";
             // 
@@ -182,7 +179,7 @@
             "68PM1 - Lớp 68PM1"});
             this.comboBox1.Location = new System.Drawing.Point(29, 566);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(580, 34);
+            this.comboBox1.Size = new System.Drawing.Size(751, 34);
             this.comboBox1.TabIndex = 31;
             // 
             // label6
@@ -203,7 +200,7 @@
             "Nữ"});
             this.comboBox2.Location = new System.Drawing.Point(29, 456);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(580, 34);
+            this.comboBox2.Size = new System.Drawing.Size(751, 34);
             this.comboBox2.TabIndex = 29;
             // 
             // label5
@@ -221,7 +218,7 @@
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker2.Location = new System.Drawing.Point(29, 347);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(580, 35);
+            this.dateTimePicker2.Size = new System.Drawing.Size(751, 35);
             this.dateTimePicker2.TabIndex = 27;
             // 
             // label4
@@ -238,7 +235,7 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(29, 222);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(580, 35);
+            this.textBox2.Size = new System.Drawing.Size(751, 35);
             this.textBox2.TabIndex = 25;
             // 
             // label3
@@ -255,7 +252,7 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(29, 96);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(580, 35);
+            this.textBox1.Size = new System.Drawing.Size(751, 35);
             this.textBox1.TabIndex = 22;
             // 
             // label2
@@ -274,10 +271,10 @@
             this.panel2.Controls.Add(this.button5);
             this.panel2.Controls.Add(this.textBox3);
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Location = new System.Drawing.Point(709, 79);
+            this.panel2.Location = new System.Drawing.Point(997, 86);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1140, 916);
-            this.panel2.TabIndex = 30;
+            this.panel2.TabIndex = 40;
             // 
             // panel3
             // 
@@ -370,51 +367,10 @@
             this.label7.TabIndex = 1;
             this.label7.Text = "Tim kiếm (Tên/ Mã SV/ Lớp):";
             // 
-            // button6
-            // 
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(738, 1022);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(135, 97);
-            this.button6.TabIndex = 36;
-            this.button6.Text = "<<";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(869, 1022);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(135, 97);
-            this.button7.TabIndex = 37;
-            this.button7.Text = "<";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // button8
-            // 
-            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(1559, 1022);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(135, 97);
-            this.button8.TabIndex = 38;
-            this.button8.Text = ">";
-            this.button8.UseVisualStyleBackColor = true;
-            // 
-            // button9
-            // 
-            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(1690, 1022);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(135, 97);
-            this.button9.TabIndex = 39;
-            this.button9.Text = ">>";
-            this.button9.UseVisualStyleBackColor = true;
-            // 
-            // quanlisinhvien
+            // UcQLSV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1889, 1223);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
@@ -425,12 +381,9 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
-            this.Name = "quanlisinhvien";
-            this.Text = "quanlisinhvien";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.Name = "UcQLSV";
+            this.Size = new System.Drawing.Size(2538, 1509);
+            this.Load += new System.EventHandler(this.QLSV_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -438,16 +391,15 @@
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem quảnLíSinhViênToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem quảnLýLớpHọcToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem đăngXuấtToolStripMenuItem;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
@@ -474,9 +426,5 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
     }
 }

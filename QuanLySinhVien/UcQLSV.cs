@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace QuanLySinhVien
 {
-    public partial class quanlisinhvien : Form
+    public partial class UcQLSV : UserControl
     {
-        public quanlisinhvien()
+        public UcQLSV()
         {
             InitializeComponent();
         }
 
-        private void quảnLíSinhViênToolStripMenuItem_Click(object sender, EventArgs e)
+        private void QLSV_Load(object sender, EventArgs e)
         {
 
         }
