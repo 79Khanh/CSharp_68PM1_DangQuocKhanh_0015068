@@ -1,6 +1,6 @@
-﻿namespace QuanLySinhVien
+namespace QuanLySinhVien.Views
 {
-    partial class UcQLLH
+    partial class UCQLLH
     {
         /// <summary> 
         /// Required designer variable.
@@ -167,7 +167,6 @@
             this.groupBox1.TabIndex = 51;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin lớp học";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // comboBox1
             // 
@@ -259,7 +258,6 @@
             this.dataGridView1.RowTemplate.Height = 28;
             this.dataGridView1.Size = new System.Drawing.Size(1087, 837);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // button5
             // 
@@ -362,7 +360,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel2);
-            this.Name = "UcQLLH";
+            this.Name = "UCQLLH";
             this.Size = new System.Drawing.Size(2538, 1509);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

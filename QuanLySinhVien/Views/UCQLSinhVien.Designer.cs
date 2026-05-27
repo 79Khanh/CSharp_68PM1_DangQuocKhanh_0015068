@@ -1,6 +1,6 @@
-﻿namespace QuanLySinhVien
+namespace QuanLySinhVien.Views
 {
-    partial class UcQLSV
+    partial class UCQLSinhVien
     {
         /// <summary> 
         /// Required designer variable.
@@ -381,9 +381,8 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel2);
-            this.Name = "UcQLSV";
+            this.Name = "UCQLSinhVien";
             this.Size = new System.Drawing.Size(2538, 1509);
-            this.Load += new System.EventHandler(this.QLSV_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);

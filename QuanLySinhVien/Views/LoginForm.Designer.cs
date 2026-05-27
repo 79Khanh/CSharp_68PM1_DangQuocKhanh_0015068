@@ -1,6 +1,6 @@
-﻿namespace QuanLySinhVien
+namespace QuanLySinhVien.Views
 {
-    partial class login
+    partial class LoginForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -99,7 +99,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Name = "login";
+            Name = "LoginForm";
             Text = "Đăng nhập";
             ResumeLayout(false);
             PerformLayout();

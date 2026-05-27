@@ -1,6 +1,6 @@
-﻿namespace QuanLySinhVien
+namespace QuanLySinhVien.Views
 {
-    partial class main
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -81,7 +81,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(2538, 1509);
             this.panel1.TabIndex = 1;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
             // main
             // 
@@ -91,7 +90,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "main";
+            this.Name = "MainForm";
             this.Text = "quanlisinhvien";
             this.Load += new System.EventHandler(this.quanlisinhvien_Load);
             this.menuStrip1.ResumeLayout(false);
