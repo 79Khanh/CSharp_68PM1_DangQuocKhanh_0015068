@@ -232,7 +232,8 @@ public partial class UCQLSinhVien : UserControl
             return;
         }
 
-        if (MessageBox.Show("Bạn có chắc chắn muốn xóa sinh viên đã chọn?", "Xác nhận",
+        string selectedStudent = $"{textBox1.Text.Trim()} - {textBox2.Text.Trim()}".Trim(' ', '-');
+        if (MessageBox.Show($"Bạn có chắc chắn muốn xóa sinh viên {selectedStudent}?", "Xác nhận",
             MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
         {
             return;
@@ -240,9 +241,18 @@ public partial class UCQLSinhVien : UserControl
 
         try
         {
-            Database.Execute(
+            int affectedRows = Database.Execute(
                 "DELETE FROM dbo.Students WHERE Id = @Id;",
                 new SqlParameter("@Id", SqlDbType.Int) { Value = selectedStudentId.Value });
+
+            if (affectedRows == 0)
+            {
+                MessageBox.Show("Sinh viên đã chọn không còn tồn tại trong cơ sở dữ liệu.");
+                LoadStudents();
+                ClearInputs();
+                return;
+            }
+
             MessageBox.Show("Xóa sinh viên thành công.");
             LoadStudents();
             ClearInputs();
