@@ -15,7 +15,7 @@ public partial class LoginForm : Form
         if (emailNhap == "0015068@st.huce.edu.vn" && matKhauNhap == "0015068")
         {
             MessageBox.Show("Đăng nhập thành công.");
-            MainForm mainForm = new();
+            MainForm mainForm = new(this);
             mainForm.Show();
             Hide();
             return;

@@ -39,6 +39,7 @@ public partial class UCQLLH : UserControl
         button3.Click += DeleteClassroom_Click;
         button4.Click += RefreshClassrooms_Click;
         button5.Click += SearchClassrooms_Click;
+        button10.Click += ViewStudents_Click;
         dataGridView1.CellClick += ClassroomsGrid_CellClick;
     }
 
@@ -234,6 +235,52 @@ public partial class UCQLLH : UserControl
     private void SearchClassrooms_Click(object? sender, EventArgs e)
     {
         LoadClassrooms(textBox3.Text.Trim());
+    }
+
+    private void ViewStudents_Click(object? sender, EventArgs e)
+    {
+        if (selectedClassroomId is null)
+        {
+            MessageBox.Show("Vui lòng chọn một lớp học để xem danh sách sinh viên.");
+            return;
+        }
+
+        DataTable students = Database.Query(
+            """
+            SELECT s.StudentCode AS [Mã sinh viên],
+                   s.FullName AS [Họ và tên],
+                   s.Gender AS [Giới tính],
+                   s.BirthDate AS [Ngày sinh],
+                   s.Notes AS [Ghi chú]
+            FROM dbo.Students AS s
+            WHERE s.ClassId = @ClassId
+            ORDER BY s.StudentCode;
+            """,
+            new SqlParameter("@ClassId", SqlDbType.Int) { Value = selectedClassroomId.Value });
+
+        using Form dialog = new()
+        {
+            Text = $"Danh sách sinh viên lớp {comboBox1.Text}",
+            StartPosition = FormStartPosition.CenterParent,
+            Size = new Size(900, 500)
+        };
+        DataGridView studentGrid = new()
+        {
+            Dock = DockStyle.Fill,
+            AutoGenerateColumns = true,
+            ReadOnly = true,
+            AllowUserToAddRows = false,
+            AllowUserToDeleteRows = false,
+            SelectionMode = DataGridViewSelectionMode.FullRowSelect,
+            DataSource = students
+        };
+        DataGridViewColumn? birthDateColumn = studentGrid.Columns["Ngày sinh"];
+        if (birthDateColumn is not null)
+        {
+            birthDateColumn.DefaultCellStyle.Format = "dd/MM/yyyy";
+        }
+        dialog.Controls.Add(studentGrid);
+        dialog.ShowDialog(this);
     }
 
     private void ClassroomsGrid_CellClick(object? sender, DataGridViewCellEventArgs e)
