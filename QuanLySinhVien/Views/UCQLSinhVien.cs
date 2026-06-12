@@ -5,9 +5,15 @@ namespace QuanLySinhVien.Views;
 
 public partial class UCQLSinhVien : UserControl
 {
+    private const int PageSize = 10;
+
     private readonly Label notesLabel = new();
     private readonly TextBox notesTextBox = new();
+    private readonly Label pageInfoLabel = new();
+    private int currentPage = 1;
     private int? selectedStudentId;
+    private string currentKeyword = string.Empty;
+    private int totalPages = 1;
 
     public UCQLSinhVien()
     {
@@ -32,8 +38,15 @@ public partial class UCQLSinhVien : UserControl
         notesTextBox.Location = new Point(29, 640);
         notesTextBox.Size = new Size(751, 35);
 
+        pageInfoLabel.AutoSize = false;
+        pageInfoLabel.Font = label6.Font;
+        pageInfoLabel.Location = new Point(945, 755);
+        pageInfoLabel.Size = new Size(550, 47);
+        pageInfoLabel.TextAlign = ContentAlignment.MiddleCenter;
+
         groupBox1.Controls.Add(notesLabel);
         groupBox1.Controls.Add(notesTextBox);
+        Controls.Add(pageInfoLabel);
     }
 
     private void ConfigureGrid()
@@ -72,6 +85,10 @@ public partial class UCQLSinhVien : UserControl
         button3.Click += DeleteStudent_Click;
         button4.Click += RefreshStudents_Click;
         button5.Click += SearchStudents_Click;
+        button6.Click += FirstPage_Click;
+        button7.Click += PreviousPage_Click;
+        button8.Click += NextPage_Click;
+        button9.Click += LastPage_Click;
         dataGridView1.CellClick += StudentsGrid_CellClick;
     }
 
@@ -84,8 +101,30 @@ public partial class UCQLSinhVien : UserControl
         comboBox1.ValueMember = "Id";
     }
 
-    private void LoadStudents(string keyword = "")
+    private void LoadStudents(string keyword = "", bool resetPage = true)
     {
+        currentKeyword = keyword;
+        if (resetPage)
+        {
+            currentPage = 1;
+        }
+
+        DataTable countTable = Database.Query(
+            """
+            SELECT COUNT(1) AS Total
+            FROM dbo.Students AS s
+            INNER JOIN dbo.Classrooms AS c ON c.Id = s.ClassId
+            WHERE @Keyword = N''
+               OR s.StudentCode LIKE N'%' + @Keyword + N'%'
+               OR s.FullName LIKE N'%' + @Keyword + N'%'
+               OR c.ClassCode LIKE N'%' + @Keyword + N'%';
+            """,
+            new SqlParameter("@Keyword", SqlDbType.NVarChar, 255) { Value = currentKeyword });
+
+        int totalRecords = Convert.ToInt32(countTable.Rows[0]["Total"]);
+        totalPages = Math.Max(1, (int)Math.Ceiling(totalRecords / (double)PageSize));
+        currentPage = Math.Min(Math.Max(1, currentPage), totalPages);
+
         string sql = """
             SELECT s.Id, s.StudentCode, s.FullName, s.Gender, s.BirthDate,
                    c.ClassCode, s.Notes
@@ -95,11 +134,26 @@ public partial class UCQLSinhVien : UserControl
                OR s.StudentCode LIKE N'%' + @Keyword + N'%'
                OR s.FullName LIKE N'%' + @Keyword + N'%'
                OR c.ClassCode LIKE N'%' + @Keyword + N'%'
-            ORDER BY s.Id DESC;
+            ORDER BY s.Id DESC
+            OFFSET @Offset ROWS FETCH NEXT @PageSize ROWS ONLY;
             """;
         dataGridView1.DataSource = Database.Query(
             sql,
-            new SqlParameter("@Keyword", SqlDbType.NVarChar, 255) { Value = keyword });
+            new SqlParameter("@Keyword", SqlDbType.NVarChar, 255) { Value = currentKeyword },
+            new SqlParameter("@Offset", SqlDbType.Int) { Value = (currentPage - 1) * PageSize },
+            new SqlParameter("@PageSize", SqlDbType.Int) { Value = PageSize });
+
+        selectedStudentId = null;
+        UpdatePagingState(totalRecords);
+    }
+
+    private void UpdatePagingState(int totalRecords)
+    {
+        pageInfoLabel.Text = $"Trang {currentPage} / {totalPages} - Tổng {totalRecords} sinh viên";
+        button6.Enabled = currentPage > 1;
+        button7.Enabled = currentPage > 1;
+        button8.Enabled = currentPage < totalPages;
+        button9.Enabled = currentPage < totalPages;
     }
 
     private bool ValidateInputs()
@@ -156,7 +210,7 @@ public partial class UCQLSinhVien : UserControl
                 """,
                 StudentParameters());
             MessageBox.Show("Thêm mới sinh viên thành công.");
-            LoadStudents();
+            LoadStudents(currentKeyword);
             ClearInputs();
         }
         catch (Exception ex)
@@ -201,7 +255,7 @@ public partial class UCQLSinhVien : UserControl
                 """,
                 parameters);
             MessageBox.Show("Cập nhật sinh viên thành công.");
-            LoadStudents();
+            LoadStudents(currentKeyword, resetPage: false);
             ClearInputs();
         }
         catch (Exception ex)
@@ -248,13 +302,13 @@ public partial class UCQLSinhVien : UserControl
             if (affectedRows == 0)
             {
                 MessageBox.Show("Sinh viên đã chọn không còn tồn tại trong cơ sở dữ liệu.");
-                LoadStudents();
+                LoadStudents(currentKeyword, resetPage: false);
                 ClearInputs();
                 return;
             }
 
             MessageBox.Show("Xóa sinh viên thành công.");
-            LoadStudents();
+            LoadStudents(currentKeyword, resetPage: false);
             ClearInputs();
         }
         catch (Exception ex)
@@ -274,6 +328,30 @@ public partial class UCQLSinhVien : UserControl
     private void SearchStudents_Click(object? sender, EventArgs e)
     {
         LoadStudents(textBox3.Text.Trim());
+    }
+
+    private void FirstPage_Click(object? sender, EventArgs e)
+    {
+        currentPage = 1;
+        LoadStudents(currentKeyword, resetPage: false);
+    }
+
+    private void PreviousPage_Click(object? sender, EventArgs e)
+    {
+        currentPage--;
+        LoadStudents(currentKeyword, resetPage: false);
+    }
+
+    private void NextPage_Click(object? sender, EventArgs e)
+    {
+        currentPage++;
+        LoadStudents(currentKeyword, resetPage: false);
+    }
+
+    private void LastPage_Click(object? sender, EventArgs e)
+    {
+        currentPage = totalPages;
+        LoadStudents(currentKeyword, resetPage: false);
     }
 
     private void StudentsGrid_CellClick(object? sender, DataGridViewCellEventArgs e)
