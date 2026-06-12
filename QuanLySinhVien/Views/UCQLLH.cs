@@ -93,6 +93,13 @@ public partial class UCQLLH : UserControl
             return;
         }
 
+        if (ClassCodeExists(textBox2.Text.Trim()))
+        {
+            MessageBox.Show("Mã lớp đã tồn tại. Vui lòng nhập mã khác.");
+            textBox2.Focus();
+            return;
+        }
+
         try
         {
             Database.Execute(
@@ -124,6 +131,13 @@ public partial class UCQLLH : UserControl
             return;
         }
 
+        if (ClassCodeExists(textBox2.Text.Trim(), selectedClassroomId.Value))
+        {
+            MessageBox.Show("Mã lớp đã tồn tại. Vui lòng nhập mã khác.");
+            textBox2.Focus();
+            return;
+        }
+
         try
         {
             SqlParameter[] parameters =
@@ -131,13 +145,22 @@ public partial class UCQLLH : UserControl
                 .. ClassroomParameters(),
                 new("@Id", SqlDbType.Int) { Value = selectedClassroomId.Value }
             ];
-            Database.Execute(
+            int affectedRows = Database.Execute(
                 """
                 UPDATE dbo.Classrooms
                 SET ClassCode = @ClassCode, ClassName = @ClassName, Notes = @Notes
                 WHERE Id = @Id;
                 """,
                 parameters);
+
+            if (affectedRows == 0)
+            {
+                MessageBox.Show("Lớp học đã chọn không còn tồn tại trong cơ sở dữ liệu.");
+                LoadClassrooms();
+                ClearInputs();
+                return;
+            }
+
             MessageBox.Show("Cập nhật lớp học thành công.");
             LoadClassrooms();
             ClearInputs();
@@ -146,6 +169,21 @@ public partial class UCQLLH : UserControl
         {
             MessageBox.Show("Không thể cập nhật lớp học: " + ex.Message);
         }
+    }
+
+    private static bool ClassCodeExists(string classCode, int? currentClassroomId = null)
+    {
+        DataTable result = Database.Query(
+            """
+            SELECT COUNT(1) AS Total
+            FROM dbo.Classrooms
+            WHERE ClassCode = @ClassCode
+              AND (@Id IS NULL OR Id <> @Id);
+            """,
+            new SqlParameter("@ClassCode", SqlDbType.NVarChar, 50) { Value = classCode },
+            new SqlParameter("@Id", SqlDbType.Int) { Value = currentClassroomId ?? (object)DBNull.Value });
+
+        return Convert.ToInt32(result.Rows[0]["Total"]) > 0;
     }
 
     private void DeleteClassroom_Click(object? sender, EventArgs e)
@@ -164,9 +202,18 @@ public partial class UCQLLH : UserControl
 
         try
         {
-            Database.Execute(
+            int affectedRows = Database.Execute(
                 "DELETE FROM dbo.Classrooms WHERE Id = @Id;",
                 new SqlParameter("@Id", SqlDbType.Int) { Value = selectedClassroomId.Value });
+
+            if (affectedRows == 0)
+            {
+                MessageBox.Show("Lớp học đã chọn không còn tồn tại trong cơ sở dữ liệu.");
+                LoadClassrooms();
+                ClearInputs();
+                return;
+            }
+
             MessageBox.Show("Xóa lớp học thành công.");
             LoadClassrooms();
             ClearInputs();
