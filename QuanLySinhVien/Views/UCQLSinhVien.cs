@@ -178,6 +178,13 @@ public partial class UCQLSinhVien : UserControl
             return;
         }
 
+        if (StudentCodeExistsForOtherStudent(textBox1.Text.Trim(), selectedStudentId.Value))
+        {
+            MessageBox.Show("Mã sinh viên đã tồn tại. Vui lòng nhập mã khác.");
+            textBox1.Focus();
+            return;
+        }
+
         try
         {
             SqlParameter[] parameters =
@@ -201,6 +208,20 @@ public partial class UCQLSinhVien : UserControl
         {
             MessageBox.Show("Không thể cập nhật sinh viên: " + ex.Message);
         }
+    }
+
+    private static bool StudentCodeExistsForOtherStudent(string studentCode, int currentStudentId)
+    {
+        DataTable result = Database.Query(
+            """
+            SELECT COUNT(1) AS Total
+            FROM dbo.Students
+            WHERE StudentCode = @StudentCode AND Id <> @Id;
+            """,
+            new SqlParameter("@StudentCode", SqlDbType.NVarChar, 50) { Value = studentCode },
+            new SqlParameter("@Id", SqlDbType.Int) { Value = currentStudentId });
+
+        return Convert.ToInt32(result.Rows[0]["Total"]) > 0;
     }
 
     private void DeleteStudent_Click(object? sender, EventArgs e)
