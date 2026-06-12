@@ -253,16 +253,33 @@ public partial class UCQLSinhVien : UserControl
         }
 
         DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+        if (row.Cells["IdColumn"].Value is null or DBNull)
+        {
+            return;
+        }
+
+        dataGridView1.ClearSelection();
+        row.Selected = true;
+
         selectedStudentId = Convert.ToInt32(row.Cells["IdColumn"].Value);
-        textBox1.Text = row.Cells[Column1.Name].Value?.ToString();
-        textBox2.Text = row.Cells[Column2.Name].Value?.ToString();
-        comboBox2.Text = row.Cells[Column3.Name].Value?.ToString();
-        if (row.Cells[Column4.Name].Value is DateTime birthDate)
+        textBox1.Text = GetCellText(row, Column1.Name);
+        textBox2.Text = GetCellText(row, Column2.Name);
+        comboBox2.Text = GetCellText(row, Column3.Name);
+
+        object? birthDateValue = row.Cells[Column4.Name].Value;
+        if (birthDateValue is DateTime birthDate)
         {
             dateTimePicker2.Value = birthDate;
         }
-        comboBox1.Text = row.Cells[Column5.Name].Value?.ToString();
-        notesTextBox.Text = row.Cells["NotesColumn"].Value?.ToString();
+
+        comboBox1.Text = GetCellText(row, Column5.Name);
+        notesTextBox.Text = GetCellText(row, "NotesColumn");
+    }
+
+    private static string GetCellText(DataGridViewRow row, string columnName)
+    {
+        object? value = row.Cells[columnName].Value;
+        return value is null or DBNull ? string.Empty : value.ToString() ?? string.Empty;
     }
 
     private void ClearInputs()
